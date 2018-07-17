@@ -70,7 +70,7 @@ open class VideoBackgroundViewController: UIViewController {
      Gets trigger when the video goes to the end, 
      */
     @objc func videoPlayerItemDidReachEnd() {
-        NotificationCenter.default.post(NotificationVideoEnd)
+        NotificationCenter.default.post(name: NotificationVideoEnd, object: videoPlayer)
         videoPlayer.player?.seek(to: kCMTimeZero)
         videoPlayer.player?.play()
     }
