@@ -11,6 +11,8 @@ import UIKit
 import MediaPlayer
 import AVKit
 
+let NotificationVideoEnd = Notification.Name(rawValue: "NotificationVideoEnd")
+
 /// Class that shows a video in the backgroun of the view controller
 open class VideoBackgroundViewController: UIViewController {
     
@@ -68,6 +70,7 @@ open class VideoBackgroundViewController: UIViewController {
      Gets trigger when the video goes to the end, 
      */
     @objc func videoPlayerItemDidReachEnd() {
+        NotificationCenter.default.post(NotificationVideoEnd)
         videoPlayer.player?.seek(to: kCMTimeZero)
         videoPlayer.player?.play()
     }
